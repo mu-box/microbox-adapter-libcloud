@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+
+  web:
+    build:
+      context: ${APP_DIR}
+      dockerfile: ${PROD_PATH}/Dockerfile
+      args:
+        PROD_PATH: ${PROD_PATH}
+    command: bin/server
+    ports:
+      - "8080:8080"
+    env_file:
+      - '.env'
+
+  worker:
+    build:
+      context: ${APP_DIR}
+      dockerfile: ${PROD_PATH}/Dockerfile
+      args:
+        PROD_PATH: ${PROD_PATH}
+    command: bin/worker
+    env_file:
+      - '.env'

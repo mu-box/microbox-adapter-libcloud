@@ -70,7 +70,7 @@ class BaseAdapterTestCase(NanoboxLibcloudTestCase):
         self.assertEqual('', rv['instructions'])
 
     def test_92_do_catalog(self):
-        rv = self.adapter.do_catalog()
+        rv = self.adapter.do_catalog({'creds': 0})
         self.assertGreater(len(rv), 0)
         for region in rv:
             self.assertIn('id', region)

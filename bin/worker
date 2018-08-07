@@ -1,0 +1,3 @@
+#!/bin/bash
+
+celery -A nanobox_libcloud.celery worker -E -l info

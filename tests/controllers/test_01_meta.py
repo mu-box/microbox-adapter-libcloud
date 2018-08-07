@@ -1,8 +1,23 @@
+import importlib
+
 import nanobox_libcloud
+
 from tests import NanoboxLibcloudTestCase
 
 
 class MetaControllerTestCase(NanoboxLibcloudTestCase):
+    def setUp(self):
+        super().setUp()
+
+        for adapter in self.adapters:
+            try:
+                a = importlib.import_module('tests.adapters.test_{}'.format(adapter))
+                b = getattr(a, adapter.title().replace('_', '') + 'AdapterTestCase')()
+                b.setUp()
+                self.patches.extend(b.patches)
+            except:
+                pass
+
     def test_01_overview(self):
         with self.app as c:
             rv = c.get('/')

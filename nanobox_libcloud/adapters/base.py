@@ -23,7 +23,7 @@ class AdapterBase(type):
     def __new__(mcs, name, bases, attrs):
         cls = super(AdapterBase, mcs).__new__(mcs, name, bases, attrs)
 
-        if name != 'Adapter':
+        if name != 'Adapter' and 'Mixin' not in name:
             mcs.register(cls)
 
         return cls

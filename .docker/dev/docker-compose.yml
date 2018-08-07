@@ -1,17 +1,29 @@
 version: '3.1'
 
 services:
-  
+
   web:
     build:
       context: ${APP_DIR}
       dockerfile: ${DEV_PATH}/Dockerfile
       args:
         DEV_PATH: ${DEV_PATH}
-    command: bin/server
+    command: python -m flask run -h 0.0.0.0 -p 8080
     volumes:
       - ${APP_DIR}:/app
     ports:
       - "8080:8080"
+    env_file:
+      - '.env'
+
+  worker:
+    build:
+      context: ${APP_DIR}
+      dockerfile: ${DEV_PATH}/Dockerfile
+      args:
+        DEV_PATH: ${DEV_PATH}
+    command: bin/worker
+    volumes:
+      - ${APP_DIR}:/app
     env_file:
       - '.env'

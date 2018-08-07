@@ -1,3 +1,5 @@
+import importlib
+
 import nanobox_libcloud
 
 from flask import json
@@ -7,6 +9,18 @@ from time import sleep
 
 class ServersControllerTestCase(NanoboxLibcloudTestCase):
     ids = {}
+
+    def setUp(self):
+        super().setUp()
+
+        for adapter in self.adapters:
+            try:
+                a = importlib.import_module('tests.adapters.test_{}'.format(adapter))
+                b = getattr(a, adapter.title().replace('_', '') + 'AdapterTestCase')()
+                b.setUp()
+                self.patches.extend(b.patches)
+            except:
+                pass
 
     def test_01_server_create(self):
         with self.app as c:
