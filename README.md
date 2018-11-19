@@ -21,6 +21,10 @@ finding evars quickly._
 -   `GCE_MONTHLY_DISK_COST`
 -   `GCE_MONTHLY_SSD_COST`
 
+### IBM SoftLayer
+-   `SL_USERNAME`\*
+-   `SL_API_KEY`\*
+
 ### Microsoft Azure Classic (Experimental)
 -   `AZC_SUB_ID`\*
 -   `AZC_KEY`\*
