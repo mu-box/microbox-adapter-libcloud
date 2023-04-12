@@ -1,5 +1,5 @@
-# nanobox-adapter-libcloud
-A Nanobox cloud provider adapter to integrate with multiple cloud providers
+# microbox-adapter-libcloud
+A Microbox cloud provider adapter to integrate with multiple cloud providers
 
 ## Required evars
 In order to grab catalog data without a user's cedentials (for generic pricing

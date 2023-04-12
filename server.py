@@ -1,4 +1,4 @@
-from nanobox_libcloud import app
+from microbox_libcloud import app
 
 
 # Start development server if this script is executed directly
